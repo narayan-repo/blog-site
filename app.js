@@ -52,6 +52,13 @@ app.get('/blogs/new', (req, res) => {
     res.render('new')
 })
 
+app.get('/blogs/:id',(req, res) => {
+    Blog.findById(req.params.id,(err,blog)=>{
+        if(err) console.log(err)
+        else res.render('more_info',{blog:blog})
+    })
+})
+
 app.listen(3001, () => {
     console.log("SERVER STARTED")
 })
