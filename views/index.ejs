@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+<div class="row d-flex justify-content-center">
+    <div class="col-8">
+        <div class="container img-thumbnail">
+            <% blogs.forEach((blog)=>{ %>
+                <div class="row d-flex justify-content-center p-3">
+                    <div class="col-3">
+                        <img src="<%= blog.image %>" alt="Blog Image" class="img-fluid">
+                    </div>
+                    <div class="col-9 align-content-center">
+                        <h6 class="lead"><%= blog.name %>></h6>
+                        <p><%= blog.time %></p>
+                        <p><%= blog.description %></p>
+                        <a href="" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                    <hr class="mt-3">
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
