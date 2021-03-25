@@ -14,8 +14,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Post Content</label>
-                    <textarea name="description" id="description" cols="100" rows="8"
-                              class="form-control"><%= blog.description %></textarea>
+                    <textarea name="description" id="description" cols="100" rows="8" class="form-control"><%= blog.description %></textarea>
+                    <a href="/blogs/<%= blog._id %>" class="btn btn-dark mt-4">Go back</a>
                     <button class="btn btn-outline-success mt-4">Update Post</button>
                 </div>
             </form>
