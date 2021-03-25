@@ -6,15 +6,17 @@
             <div class="d-flex justify-content-center">
                 <img src="<%= blog.image %>" alt="Blog Image" class="img-fluid">
             </div>
-            <p><%= blog.time %></p>
-            <p><%= blog.description %></p>
-            <div class="d-flex pt-2">
-                <form action="/blogs/<%= blog._id %>/edit">
-                    <button class="btn btn-outline-warning">Update</button>
-                </form>
-                <form action="/blogs/<%= blog._id%>?_method=DELETE"  method="post" >
-                    <button class="btn btn-outline-danger px-3 ms-5">Delete</button>
-                </form>
+            <div class="container p-5">
+                <p><%= blog.time %></p>
+                <p><%= blog.description %></p>
+                <div class="d-flex pt-2">
+                    <form action="/blogs/<%= blog._id %>/edit">
+                        <button class="btn btn-outline-warning">Update</button>
+                    </form>
+                    <form action="/blogs/<%= blog._id%>?_method=DELETE"  method="post" >
+                        <button class="btn btn-outline-danger px-3 ms-5">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

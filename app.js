@@ -76,10 +76,11 @@ app.get('/blogs/:id/edit',((req, res) => {
 
 app.put('/blogs/:id/edit',(req, res) => {
     const name = req.body.name;
+    const image = req.body.image;
     const description = req.body.description;
     Blog.findById(req.params.id,(err,blog)=>{
         if(err) res.redirect('blogs/:id');
-        Blog.findByIdAndUpdate(req.params.id,{$set: {name: name, description: description}},(err =>{
+        Blog.findByIdAndUpdate(req.params.id,{$set: {name: name, image: image,description: description}},(err =>{
             if (err) console.log(err)
             res.redirect('/blogs/'+req.params.id)
         } ))

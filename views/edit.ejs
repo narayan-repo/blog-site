@@ -1,14 +1,25 @@
 <%- include("partials/header.ejs") %>
-    <h1 class="display-3">Edit Post</h1>
-    <form action="/blogs/<%= blog._id %>/edit?_method=PUT" method="post">
-        <label for="name">Title</label>
-        <input type="text" id="name" name="name">
-        <br>
-        <label for="description">Post Content</label>
-        <textarea name="description" id="description" cols="100" rows="10">
-            <%= blog.description%>
-        </textarea>
-        <br>
-        <button>Update Post</button>
-    </form>
+<div class="row d-flex justify-content-center">
+    <div class="col-7">
+        <div class="container img-thumbnail">
+            <h1 class="display-6 mb-md-3">Edit Post</h1>
+            <form action="/blogs/<%= blog._id %>/edit?_method=PUT" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Title</label>
+                    <input type="text" id="name" name="name" value="<%= blog.name %>" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image URL</label>
+                    <input type="text" id="image" name="image" value="<%= blog.image %>" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Post Content</label>
+                    <textarea name="description" id="description" cols="100" rows="8"
+                              class="form-control"><%= blog.description %></textarea>
+                    <button class="btn btn-outline-success mt-4">Update Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <%- include("partials/footer.ejs") %>
