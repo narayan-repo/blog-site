@@ -1,10 +1,12 @@
 const express = require('express'),
     bodyParser = require('body-parser'),
     app = express(),
+    methodOverride = require('method-override'),
     mongoose = require('mongoose');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 //database connection
 mongoose.connect("mongodb://localhost:27017/blog_site", {
@@ -22,7 +24,6 @@ const blog = new mongoose.Schema(
 );
 
 const Blog = mongoose.model("Blog", blog);
-
 
 app.get("/", (req, res) => {
     res.send("This is the root route");
@@ -57,6 +58,13 @@ app.get('/blogs/:id',(req, res) => {
         if(err) console.log(err)
         else res.render('more_info',{blog:blog})
     })
+})
+
+app.delete('/blogs/:id',(req, res) => {
+    Blog.findByIdAndRemove(req.params.id,(err)=>{
+        if(err) res.redirect('/blogs')
+        else res.redirect('/blogs')
+    });
 })
 
 app.listen(3001, () => {
