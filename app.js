@@ -67,6 +67,25 @@ app.delete('/blogs/:id',(req, res) => {
     });
 })
 
+app.get('/blogs/:id/edit',((req, res) => {
+    Blog.findById(req.params.id,(err,blog)=>{
+        if(err) res.redirect('/blogs/:id')
+        else res.render('edit',{blog: blog})
+    })
+}))
+
+app.put('/blogs/:id/edit',(req, res) => {
+    const name = req.body.name;
+    const description = req.body.description;
+    Blog.findById(req.params.id,(err,blog)=>{
+        if(err) res.redirect('blogs/:id');
+        Blog.findByIdAndUpdate(req.params.id,{$set: {name: name, description: description}},(err =>{
+            if (err) console.log(err)
+            res.redirect('/blogs/'+req.params.id)
+        } ))
+    })
+})
+
 app.listen(3001, () => {
     console.log("SERVER STARTED")
 })
