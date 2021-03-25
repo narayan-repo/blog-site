@@ -4,8 +4,6 @@ const express = require('express'),
     methodOverride = require('method-override'),
     mongoose = require('mongoose');
 
-let date_ob = new Date();
-
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
@@ -40,7 +38,8 @@ app.get('/blogs', (req, res) => {
 
 app.post('/blogs', (req, res) => {
     console.log(req.body)
-    const timestamp = date_ob.toLocaleDateString() +" " + date_ob.getHours()+":" +date_ob.getMinutes();
+    let date_ob = new Date();
+    let timestamp = date_ob.toLocaleDateString() +" " + date_ob.getHours()+":" +date_ob.getMinutes();
     Blog.create(
         {
             name: req.body.name,
