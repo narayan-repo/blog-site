@@ -81,8 +81,10 @@ app.put('/blogs/:id/edit',(req, res) => {
     const image = req.body.image;
     const description = req.body.description;
     Blog.findById(req.params.id,(err,blog)=>{
+        let date_ob = new Date();
+        let timestamp = date_ob.toLocaleDateString() +" " + date_ob.getHours()+":" +date_ob.getMinutes();
         if(err) res.redirect('blogs/:id');
-        Blog.findByIdAndUpdate(req.params.id,{$set: {name: name, image: image,description: description}},(err =>{
+        Blog.findByIdAndUpdate(req.params.id,{$set: {name: name, image: image,time: timestamp,description: description}},(err =>{
             if (err) console.log(err)
             res.redirect('/blogs/'+req.params.id)
         } ))
